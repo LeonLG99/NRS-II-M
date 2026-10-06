@@ -1,0 +1,61 @@
+---
+SR1:
+    username: admin
+    password: admin
+    platform: nokia_sros
+    hostname: 172.20.20.2
+SR10:
+    username: admin
+    password: admin
+    platform: nokia_sros
+    hostname: 172.20.20.4
+SR11:
+    username: admin
+    password: admin
+    platform: nokia_sros
+    hostname: 172.20.20.10
+SR12:
+    username: admin
+    password: admin
+    platform: nokia_sros
+    hostname: 172.20.20.7
+SR2:
+    username: admin
+    password: admin
+    platform: nokia_sros
+    hostname: 172.20.20.8
+SR3:
+    username: admin
+    password: admin
+    platform: nokia_sros
+    hostname: 172.20.20.5
+SR4:
+    username: admin
+    password: admin
+    platform: nokia_sros
+    hostname: 172.20.20.11
+SR5:
+    username: admin
+    password: admin
+    platform: nokia_sros
+    hostname: 172.20.20.9
+SR6:
+    username: admin
+    password: admin
+    platform: nokia_sros
+    hostname: 172.20.20.12
+SR7:
+    username: admin
+    password: admin
+    platform: nokia_sros
+    hostname: 172.20.20.6
+SR8:
+    username: admin
+    password: admin
+    platform: nokia_sros
+    hostname: 172.20.20.3
+SR9:
+    username: admin
+    password: admin
+    platform: nokia_sros
+    hostname: 172.20.20.13

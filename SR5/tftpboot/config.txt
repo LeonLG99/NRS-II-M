@@ -1,0 +1,899 @@
+# TiMOS-C-24.10.R6 cpm/x86_64 Nokia 7250 IXR Copyright (c) 2000-2025 Nokia.
+# All rights reserved. All use subject to applicable license agreements.
+# Built on Wed Aug 13 19:19:31 UTC 2025 by builder in /builds/2410B/R6/panos
+# Configuration format version 24.10 revision 0
+
+# Generated WED SEP 23 05:56:50 2026 UTC
+
+exit all
+configure
+#--------------------------------------------------
+echo "System Configuration"
+#--------------------------------------------------
+    system
+        name "SR5"
+        config-backup 5
+        dns
+            address-pref ipv6-first
+        exit
+        netconf
+            listen
+                no shutdown
+            exit
+        exit
+        snmp
+            streaming
+                no shutdown
+            exit
+            packet-size 9216
+        exit
+        time
+            sntp
+                shutdown
+            exit
+            zone UTC
+        exit
+    exit
+#--------------------------------------------------
+echo "Filter Match lists Configuration"
+#--------------------------------------------------
+    filter
+        match-list
+            ip-prefix-list "Argus Servers" create
+                prefix 172.20.20.1/32
+                prefix 172.20.20.9/32
+            exit
+            ip-prefix-list "test" create
+                prefix 172.31.255.29/32
+                prefix 172.31.255.30/32
+            exit
+        exit
+    exit
+#--------------------------------------------------
+echo "System Security Configuration"
+#--------------------------------------------------
+    system
+        security
+            management-access-filter
+                ip-filter
+                    shutdown
+                    default-action permit
+                    entry 10
+                        src-ip 172.20.20.1/32
+                        protocol udp
+                        dst-port 162 65535
+                        action deny
+                    exit
+                    entry 20
+                        src-ip ip-prefix-list "Argus Servers"
+                        protocol udp
+                        dst-port 161 65535
+                        action deny
+                    exit
+                    entry 30
+                        src-port cpm
+                        src-ip ip-prefix-list "Argus Servers"
+                        protocol udp
+                        dst-port 162 65535
+                        action deny
+                    exit
+                    entry 40
+                        src-ip 172.20.20.1/32
+                        protocol udp
+                        dst-port 161 65535
+                        action deny
+                    exit
+                    entry 50
+                        src-ip ip-prefix-list "test"
+                        protocol udp
+                        action permit
+                    exit
+                    no shutdown
+                exit
+            exit
+            profile "administrative"
+                netconf
+                    base-op-authorization
+                        action
+                        cancel-commit
+                        close-session
+                        commit
+                        copy-config
+                        create-subscription
+                        delete-config
+                        discard-changes
+                        edit-config
+                        get
+                        get-config
+                        get-data
+                        get-schema
+                        kill-session
+                        lock
+                        validate
+                    exit
+                exit
+                entry 10
+                    match "configure system security"
+                    action permit
+                exit
+                entry 20
+                    match "show system security"
+                    action permit
+                exit
+                entry 30
+                    match "tools perform security"
+                    action permit
+                exit
+                entry 40
+                    match "tools dump security"
+                    action permit
+                exit
+                entry 42
+                    match "tools dump system security"
+                    action permit
+                exit
+                entry 50
+                    match "admin system security"
+                    action permit
+                exit
+                entry 100
+                    match "configure li"
+                    action deny
+                exit
+                entry 110
+                    match "show li"
+                    action deny
+                exit
+                entry 111
+                    match "clear li"
+                    action deny
+                exit
+                entry 112
+                    match "tools dump li"
+                    action deny
+                exit
+            exit
+            password
+                attempts 64 time 5 lockout 10
+            exit
+            user "admin"
+                password "$2y$10$TQrZlpBDra86.qoexZUzQeBXDY1FcdDhGWdD9lLxMuFyPVSm0OGy6"
+                access console ftp netconf grpc
+                no restricted-to-home
+                public-keys
+                    rsa
+                        rsa-key 32 create
+                            key-value "AAAAB3NzaC1yc2EAAAADAQABAAACAQC5qbOpeUTZpVcyZXZc+8VJtbdEDLuqOHbZI1d1JNynvtBDZnYuFsoiGFADG4aBHQ+X/IepL2MijmtT6ndaFyJAENELxwZWNz0CzYrLDp3PET5O7CUR5dSbfenHcUJTEOU+p9aJ5FtXbGAfVvt4UVE1XTkqRgdipIkzkkHWkjO7AI9CZQb3hG27c9HL2quK3bRMzu2Kx9gsPBb9soaVcbYGK6VEyD+yzGatE3Mc2j5KUhwbbuMPPkXvU7FAX5/oWiJ9lPT4sZgI7QIhpYVqZGpBGpUlPA+GfyEPDY0ycw7k6HBAQViWmouMcIJ5xq7Kj7ZpQWFKyXpOQdboEza9Lg7qZj23Cg908boqM67fcJthg6dO6vINA9IJ2Urf03X4mKHz9wF1Qij5IaauXlrmjO341we63teUY5vONHkyeYPuEHQcfEhVpNVRlkKMbTSzYL5pdEk6jIxJpRIqC/YfUURWiGb177DDhGBuVv+p+lAkAL+/nzxzSP9OiDvT8QDQIySYvYeKkvAQcfyMzXh2cNne39uSOwI/0D2T2oi9cZmajrn1/+e3WlShZee9QlGWf0Hi7mWX4cXcRQorty1MiLIjHCaV2TfcL7+U9ESByXBS52mT25wli6nvY1Gv6PYYSpY0ZaKsYeVKSieiZMl9YyLqjzQ9KIAsK8nNJkHLa4k0cw=="
+                        exit
+                    exit
+                exit
+                console
+                    member "administrative"
+                exit
+            exit
+            snmp
+                community "76HzdddhlPpRo1Vql+ZB5spLqccgYQ==" hash2 r version v2c
+            exit
+            no per-peer-queuing
+            telnet
+            exit
+        exit
+    exit
+#--------------------------------------------------
+echo "System Login Control Configuration"
+#--------------------------------------------------
+    system
+        login-control
+            ssh
+                inbound-max-sessions 30
+            exit
+        exit
+    exit
+#--------------------------------------------------
+echo "Log Configuration"
+#--------------------------------------------------
+    log
+        snmp-trap-group 30 name "30"
+            trap-target "UBUNTU" address 172.20.20.1 snmpv2c notify-community "public"
+        exit
+        log-id 30 name "30"
+            from main
+            to snmp 50
+            no shutdown
+        exit
+        log-id 40 name "40"
+            from main
+            no shutdown
+        exit
+        log-id 50 name "50"
+            from debug-trace
+            to memory
+            no shutdown
+        exit
+    exit
+#--------------------------------------------------
+echo "System gRPC Configuration"
+#--------------------------------------------------
+    system
+        grpc
+            allow-unsecure-connection
+            no shutdown
+        exit
+    exit
+#--------------------------------------------------
+echo "Eth-CFM Configuration"
+#--------------------------------------------------
+    eth-cfm
+        domain 1 format none level 3 admin-name "1"
+            association 1 format icc-based name "03-0000000101" admin-name "1"
+                bridge-identifier bridge-name "200"
+                exit
+                ccm-interval 1
+                remote-mepid 20
+            exit
+        exit
+    exit
+#--------------------------------------------------
+echo "Oper-Groups (Declarations) Configuration"
+#--------------------------------------------------
+    service
+    exit
+#--------------------------------------------------
+echo "Card Configuration"
+#--------------------------------------------------
+    card 1
+        card-type imm6-qsfpdd+48-sfp56
+        mda 1
+            no shutdown
+        exit
+        no shutdown
+    exit
+#--------------------------------------------------
+echo "Connector Configuration"
+#--------------------------------------------------
+    port 1/1/c1
+        connector
+            breakout c1-100g
+        exit
+        no shutdown
+    exit
+    port 1/1/c2
+        connector
+            breakout c1-100g
+        exit
+        no shutdown
+    exit
+    port 1/1/c3
+        shutdown
+    exit
+    port 1/1/c4
+        shutdown
+    exit
+    port 1/1/c5
+        shutdown
+    exit
+    port 1/1/c6
+        shutdown
+    exit
+    port 1/1/c7
+        shutdown
+    exit
+    port 1/1/c8
+        shutdown
+    exit
+    port 1/1/c9
+        shutdown
+    exit
+    port 1/1/c10
+        shutdown
+    exit
+    port 1/1/c11
+        shutdown
+    exit
+    port 1/1/c12
+        shutdown
+    exit
+    port 1/1/c13
+        shutdown
+    exit
+    port 1/1/c14
+        shutdown
+    exit
+    port 1/1/c15
+        shutdown
+    exit
+    port 1/1/c16
+        shutdown
+    exit
+    port 1/1/c17
+        shutdown
+    exit
+    port 1/1/c18
+        shutdown
+    exit
+    port 1/1/c19
+        shutdown
+    exit
+    port 1/1/c20
+        shutdown
+    exit
+    port 1/1/c21
+        shutdown
+    exit
+    port 1/1/c22
+        shutdown
+    exit
+    port 1/1/c23
+        shutdown
+    exit
+    port 1/1/c24
+        shutdown
+    exit
+    port 1/1/c25
+        shutdown
+    exit
+    port 1/1/c26
+        shutdown
+    exit
+    port 1/1/c27
+        shutdown
+    exit
+    port 1/1/c28
+        shutdown
+    exit
+    port 1/1/c29
+        shutdown
+    exit
+    port 1/1/c30
+        shutdown
+    exit
+    port 1/1/c31
+        shutdown
+    exit
+    port 1/1/c32
+        shutdown
+    exit
+    port 1/1/c33
+        shutdown
+    exit
+    port 1/1/c34
+        shutdown
+    exit
+    port 1/1/c35
+        shutdown
+    exit
+    port 1/1/c36
+        shutdown
+    exit
+    port 1/1/c37
+        shutdown
+    exit
+    port 1/1/c38
+        shutdown
+    exit
+    port 1/1/c39
+        shutdown
+    exit
+    port 1/1/c40
+        shutdown
+    exit
+    port 1/1/c41
+        shutdown
+    exit
+    port 1/1/c42
+        shutdown
+    exit
+    port 1/1/c43
+        shutdown
+    exit
+    port 1/1/c44
+        shutdown
+    exit
+    port 1/1/c45
+        shutdown
+    exit
+    port 1/1/c46
+        shutdown
+    exit
+    port 1/1/c47
+        shutdown
+    exit
+    port 1/1/c48
+        shutdown
+    exit
+    port 1/1/c49
+        shutdown
+    exit
+    port 1/1/c50
+        shutdown
+    exit
+    port 1/1/c51
+        shutdown
+    exit
+    port 1/1/c52
+        shutdown
+    exit
+    port 1/1/c53
+        shutdown
+    exit
+    port 1/1/c54
+        shutdown
+    exit
+#--------------------------------------------------
+echo "Port Configuration"
+#--------------------------------------------------
+    port 1/1/c1/1
+        ethernet
+        exit
+        no shutdown
+    exit
+    port 1/1/c2/1
+        ethernet
+            mode access
+            encap-type dot1q
+        exit
+        no shutdown
+    exit
+    port A/1
+    exit
+#--------------------------------------------------
+echo "System Sync-If-Timing Configuration"
+#--------------------------------------------------
+    system
+        sync-if-timing
+            begin
+            commit
+        exit
+    exit
+#--------------------------------------------------
+echo "Filter Configuration"
+#--------------------------------------------------
+    filter
+        ip-filter 10 name "10" create
+            entry 10 create
+            exit
+        exit
+    exit
+#--------------------------------------------------
+echo "Management Router Configuration"
+#--------------------------------------------------
+    router management
+    exit
+
+#--------------------------------------------------
+echo "Router (Network Side) Configuration"
+#--------------------------------------------------
+    router Base
+#--------------------------------------------------
+echo "MPLS Label Range Configuration"
+#--------------------------------------------------
+        mpls-labels
+            sr-labels start 20000 end 29999
+        exit
+        interface "system"
+            address 10.10.10.5/32
+            ipv6
+                address 2001:db8::5/128
+            exit
+            no shutdown
+        exit
+        interface "toR1"
+            address 10.1.5.5/24
+            port 1/1/c1/1
+            ingress
+            exit
+            no shutdown
+        exit
+        autonomous-system 64496
+#--------------------------------------------------
+echo "Segment Routing Configuration"
+#--------------------------------------------------
+        segment-routing
+            sr-mpls
+                prefix-sids "system"
+                exit
+            exit
+        exit
+#--------------------------------------------------
+echo "OSPFv2 Configuration"
+#--------------------------------------------------
+        ospf 0
+            area 0.0.0.0
+                interface "system"
+                    interface-type point-to-point
+                    no shutdown
+                exit
+                interface "toR1"
+                    interface-type point-to-point
+                    no shutdown
+                exit
+            exit
+            no shutdown
+        exit
+#--------------------------------------------------
+echo "ISIS Configuration"
+#--------------------------------------------------
+        isis 0
+            router-id 10.10.10.5
+            level-capability level-1
+            area-id 49.01
+            traffic-engineering
+            reference-bandwidth 10000000
+            advertise-router-capability area
+            level 1
+                wide-metrics-only
+            exit
+            level 2
+                wide-metrics-only
+            exit
+            segment-routing
+                prefix-sid-range global
+                no shutdown
+            exit
+            interface "system"
+                interface-type point-to-point
+                ipv4-node-sid index 1
+                no shutdown
+            exit
+            interface "toR1"
+                interface-type point-to-point
+                no shutdown
+            exit
+            no shutdown
+        exit
+#--------------------------------------------------
+echo "MPLS Configuration"
+#--------------------------------------------------
+        mpls
+            interface "system"
+                no shutdown
+            exit
+            interface "toR1"
+                no shutdown
+            exit
+        exit
+#--------------------------------------------------
+echo "RSVP Configuration"
+#--------------------------------------------------
+        rsvp
+            interface "system"
+                no shutdown
+            exit
+            interface "toR1"
+                no shutdown
+            exit
+            no shutdown
+        exit
+#--------------------------------------------------
+echo "MPLS LSP Configuration"
+#--------------------------------------------------
+        mpls
+            path "loose"
+                no shutdown
+            exit
+            path "secondary-1"
+                no shutdown
+            exit
+            lsp "R5-R8"
+                to 10.10.10.8
+                adspec
+                primary "loose"
+                exit
+                no shutdown
+            exit
+            no shutdown
+        exit
+#--------------------------------------------------
+echo "LDP Configuration"
+#--------------------------------------------------
+        ldp
+            import-pmsi-routes
+            exit
+            tcp-session-parameters
+            exit
+            interface-parameters
+                interface "toR1" dual-stack
+                    ipv4
+                        no shutdown
+                    exit
+                    no shutdown
+                exit
+            exit
+            targeted-session
+            exit
+            no shutdown
+        exit
+    exit
+
+#--------------------------------------------------
+echo "Service Configuration"
+#--------------------------------------------------
+    service
+        sdp 1 mpls create
+            far-end 10.10.10.1
+            ldp
+            keep-alive
+                shutdown
+            exit
+            no shutdown
+        exit
+        sdp 6 mpls create
+            far-end 10.10.10.6
+            ldp
+            keep-alive
+                shutdown
+            exit
+            no shutdown
+        exit
+        sdp 7 mpls create
+            far-end 10.10.10.7
+            ldp
+            keep-alive
+                shutdown
+            exit
+            no shutdown
+        exit
+        sdp 8 mpls create
+            far-end 10.10.10.8
+            lsp "R5-R8"
+            keep-alive
+                shutdown
+            exit
+            no shutdown
+        exit
+        customer 1 name "1" create
+            description "Default customer"
+        exit
+        customer 110 name "110" create
+            phone "1-888-555-1212"
+        exit
+        customer 200 name "200" create
+        exit
+        customer 300 name "300" create
+        exit
+        customer 500 name "500" create
+            description "IES Customer"
+        exit
+        vprn 110 name "110" customer 110 create
+            interface "VPRN" create
+            exit
+        exit
+        ies 500 name "500" customer 500 create
+            interface "to-Site1" create
+            exit
+        exit
+        epipe 10 name "10" customer 1 create
+            sap 1/1/c2/1:10 create
+                no shutdown
+            exit
+            spoke-sdp 8:10 create
+                no shutdown
+            exit
+            no shutdown
+        exit
+        epipe 20 name "20" customer 1 create
+            sap 1/1/c2/1:20 create
+                no shutdown
+            exit
+            spoke-sdp 8:20 create
+                no shutdown
+            exit
+            no shutdown
+        exit
+        vprn 110 name "110" customer 110 create
+            description "VPRN Service for Custimer Blue"
+            router-id 10.10.10.5
+            autonomous-system 64496
+            interface "VPRN" create
+                description "Customer_Blue_Site_1"
+                address 10.5.9.5/24
+                ipv6
+                    address 2001:db8:11::5/64
+                exit
+                sap 1/1/c2/1:110 create
+                exit
+            exit
+            bgp-ipvpn
+                mpls
+                    auto-bind-tunnel
+                        resolution-filter
+                            ldp
+                        exit
+                        resolution filter
+                    exit
+                    route-distinguisher 64496:110
+                    vrf-target target:64496:110
+                    no shutdown
+                exit
+            exit
+            bgp
+                ebgp-default-reject-policy import export
+                group "toCE1"
+                    family ipv4
+                    peer-as 64497
+                    neighbor 10.5.9.9
+                        import "accept-all"
+                        export "MPBGP-BGP"
+                    exit
+                exit
+                group "to_CE1_Blue"
+                    family ipv6
+                    peer-as 64497
+                    neighbor 2001:db8:11::9
+                        import "accept-all"
+                        export "MPBGP-BGP"
+                    exit
+                exit
+                no shutdown
+            exit
+            no shutdown
+        exit
+        vpls 200 name "200" customer 200 create
+            stp
+                shutdown
+            exit
+            sap 1/1/c2/1:* create
+                eth-cfm
+                    mep 10 domain 1 association 1 direction up
+                        eth-test-enable
+                        exit
+                        ccm-enable
+                        install-mep
+                        no shutdown
+                    exit
+                exit
+                no shutdown
+            exit
+            mesh-sdp 6:200 create
+                no shutdown
+            exit
+            mesh-sdp 7:200 create
+                no shutdown
+            exit
+            mesh-sdp 8:200 create
+                no shutdown
+            exit
+            no shutdown
+        exit
+        epipe 300 name "300" customer 300 create
+            sap 1/1/c2/1:40 create
+                no shutdown
+            exit
+            spoke-sdp 1:300 create
+                no shutdown
+            exit
+            no shutdown
+        exit
+        ies 500 name "500" customer 500 create
+            interface "to-Site1" create
+                address 172.16.1.1/24
+                sap 1/1/c2/1:60 create
+                exit
+            exit
+            no shutdown
+        exit
+    exit
+#--------------------------------------------------
+echo "Filter Match lists Configuration"
+#--------------------------------------------------
+    filter
+        match-list
+            ip-prefix-list "Argus Servers" create
+            exit
+            ip-prefix-list "test" create
+            exit
+        exit
+    exit
+#--------------------------------------------------
+echo "Router (Service Side) Configuration"
+#--------------------------------------------------
+    router Base
+#--------------------------------------------------
+echo "OSPFv2 Configuration"
+#--------------------------------------------------
+        ospf 0
+            no shutdown
+        exit
+#--------------------------------------------------
+echo "ISIS Configuration"
+#--------------------------------------------------
+        isis 0
+            interface "to-Site1"
+                interface-type point-to-point
+                no shutdown
+            exit
+            no shutdown
+        exit
+#--------------------------------------------------
+echo "Policy Configuration"
+#--------------------------------------------------
+        policy-options
+            begin
+            policy-statement "MPBGP-BGP"
+                entry 10
+                    from
+                        protocol bgp-vpn
+                    exit
+                    to
+                        protocol bgp
+                    exit
+                    action accept
+                    exit
+                exit
+            exit
+            policy-statement "accept-all"
+                default-action accept
+                exit
+            exit
+            commit
+        exit
+#--------------------------------------------------
+echo "BGP Configuration"
+#--------------------------------------------------
+        bgp
+            ebgp-default-reject-policy import export
+            group "MP-iBGP"
+                family vpn-ipv4 vpn-ipv6
+                peer-as 64496
+                neighbor 10.10.10.6
+                exit
+                neighbor 10.10.10.7
+                exit
+                neighbor 10.10.10.8
+                exit
+            exit
+            no shutdown
+        exit
+    exit
+
+#--------------------------------------------------
+echo "Log all events for service vprn, log syslog tls-client-profile Configuration"
+#--------------------------------------------------
+    log
+    exit
+#--------------------------------------------------
+echo "SAA Tests Configuration"
+#--------------------------------------------------
+    saa
+        test "DAR302C-EB051O Y.1731" owner "SR5"
+            shutdown
+            description "Tester"
+        exit
+        test "DAR302C-EB051O Y.1731"
+            type
+                eth-cfm-two-way-delay remote-mepid 20 mep 10 domain 1 association 1
+            exit
+            no shutdown
+        exit
+    exit
+
+#--------------------------------------------------
+echo "Mirror Configuration"
+#--------------------------------------------------
+    mirror
+        mirror-dest 101 name "101" create
+            shutdown
+            remote-source
+                spoke-sdp 1:101 create
+                    no shutdown
+                exit
+            exit
+            sap 1/1/c2/1:101 create
+            exit
+        exit
+        mirror-source "101"
+            no shutdown
+        exit
+    exit
+#--------------------------------------------------
+echo "System Configuration Mode Configuration"
+#--------------------------------------------------
+    system
+        management-interface
+            configuration-mode classic
+        exit
+    exit
+
+exit all
+
+# Finished WED SEP 23 05:56:50 2026 UTC

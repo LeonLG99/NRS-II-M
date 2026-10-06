@@ -1,0 +1,663 @@
+{
+  "name": "NRS-II-IXR-LAB",
+  "type": "clab",
+  "clab": {
+    "config": {
+      "prefix": "clab",
+      "mgmt": {
+        "network": "clab",
+        "bridge": "br-3f1ff21540fe",
+        "ipv4-subnet": "172.20.20.0/24",
+        "ipv4-gw": "172.20.20.1",
+        "ipv6-subnet": "3fff:172:20:20::/64",
+        "ipv6-gw": "3fff:172:20:20::1",
+        "external-access": true
+      }
+    }
+  },
+  "ssh-pub-keys": ["ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC5qbOpeUTZpVcyZXZc+8VJtbdEDLuqOHbZI1d1JNynvtBDZnYuFsoiGFADG4aBHQ+X/IepL2MijmtT6ndaFyJAENELxwZWNz0CzYrLDp3PET5O7CUR5dSbfenHcUJTEOU+p9aJ5FtXbGAfVvt4UVE1XTkqRgdipIkzkkHWkjO7AI9CZQb3hG27c9HL2quK3bRMzu2Kx9gsPBb9soaVcbYGK6VEyD+yzGatE3Mc2j5KUhwbbuMPPkXvU7FAX5/oWiJ9lPT4sZgI7QIhpYVqZGpBGpUlPA+GfyEPDY0ycw7k6HBAQViWmouMcIJ5xq7Kj7ZpQWFKyXpOQdboEza9Lg7qZj23Cg908boqM67fcJthg6dO6vINA9IJ2Urf03X4mKHz9wF1Qij5IaauXlrmjO341we63teUY5vONHkyeYPuEHQcfEhVpNVRlkKMbTSzYL5pdEk6jIxJpRIqC/YfUURWiGb177DDhGBuVv+p+lAkAL+/nzxzSP9OiDvT8QDQIySYvYeKkvAQcfyMzXh2cNne39uSOwI/0D2T2oi9cZmajrn1/+e3WlShZee9QlGWf0Hi7mWX4cXcRQorty1MiLIjHCaV2TfcL7+U9ESByXBS52mT25wli6nvY1Gv6PYYSpY0ZaKsYeVKSieiZMl9YyLqjzQ9KIAsK8nNJkHLa4k0cw=="],
+  "nodes": {
+    "SR1": {
+      "index": "0",
+      "shortname": "SR1",
+      "longname": "clab-NRS-II-IXR-LAB-SR1",
+      "fqdn": "SR1.NRS-II-IXR-LAB.io",
+      "group": "",
+      "labdir": "/root/LABS/clab-NRS-II-IXR-LAB/SR1",
+      "kind": "nokia_sros",
+      "image": "vrnetlab/nokia_sros:24.10.R6",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.2",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::2",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-git-branch": "master",
+        "clab-mgmt-net-bridge": "br-3f1ff21540fe",
+        "clab-node-group": "",
+        "clab-node-kind": "nokia_sros",
+        "clab-node-lab-dir": "/root/LABS/clab-NRS-II-IXR-LAB/SR1",
+        "clab-node-longname": "clab-NRS-II-IXR-LAB-SR1",
+        "clab-node-name": "SR1",
+        "clab-node-type": "ixr-xs",
+        "clab-owner": "root",
+        "clab-topo-file": "/root/LABS/NRS_II_Ty.clab.yaml",
+        "containerlab": "NRS-II-IXR-LAB"
+      },
+      "port-bindings": [
+      ]
+    },
+    "SR10": {
+      "index": "1",
+      "shortname": "SR10",
+      "longname": "clab-NRS-II-IXR-LAB-SR10",
+      "fqdn": "SR10.NRS-II-IXR-LAB.io",
+      "group": "",
+      "labdir": "/root/LABS/clab-NRS-II-IXR-LAB/SR10",
+      "kind": "nokia_sros",
+      "image": "vrnetlab/nokia_sros:24.10.R6",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.4",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::4",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-git-branch": "master",
+        "clab-mgmt-net-bridge": "br-3f1ff21540fe",
+        "clab-node-group": "",
+        "clab-node-kind": "nokia_sros",
+        "clab-node-lab-dir": "/root/LABS/clab-NRS-II-IXR-LAB/SR10",
+        "clab-node-longname": "clab-NRS-II-IXR-LAB-SR10",
+        "clab-node-name": "SR10",
+        "clab-node-type": "ixr-xs",
+        "clab-owner": "root",
+        "clab-topo-file": "/root/LABS/NRS_II_Ty.clab.yaml",
+        "containerlab": "NRS-II-IXR-LAB"
+      },
+      "port-bindings": [
+      ]
+    },
+    "SR11": {
+      "index": "2",
+      "shortname": "SR11",
+      "longname": "clab-NRS-II-IXR-LAB-SR11",
+      "fqdn": "SR11.NRS-II-IXR-LAB.io",
+      "group": "",
+      "labdir": "/root/LABS/clab-NRS-II-IXR-LAB/SR11",
+      "kind": "nokia_sros",
+      "image": "vrnetlab/nokia_sros:24.10.R6",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.10",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::a",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-git-branch": "master",
+        "clab-mgmt-net-bridge": "br-3f1ff21540fe",
+        "clab-node-group": "",
+        "clab-node-kind": "nokia_sros",
+        "clab-node-lab-dir": "/root/LABS/clab-NRS-II-IXR-LAB/SR11",
+        "clab-node-longname": "clab-NRS-II-IXR-LAB-SR11",
+        "clab-node-name": "SR11",
+        "clab-node-type": "ixr-xs",
+        "clab-owner": "root",
+        "clab-topo-file": "/root/LABS/NRS_II_Ty.clab.yaml",
+        "containerlab": "NRS-II-IXR-LAB"
+      },
+      "port-bindings": [
+      ]
+    },
+    "SR12": {
+      "index": "3",
+      "shortname": "SR12",
+      "longname": "clab-NRS-II-IXR-LAB-SR12",
+      "fqdn": "SR12.NRS-II-IXR-LAB.io",
+      "group": "",
+      "labdir": "/root/LABS/clab-NRS-II-IXR-LAB/SR12",
+      "kind": "nokia_sros",
+      "image": "vrnetlab/nokia_sros:24.10.R6",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.7",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::7",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-git-branch": "master",
+        "clab-mgmt-net-bridge": "br-3f1ff21540fe",
+        "clab-node-group": "",
+        "clab-node-kind": "nokia_sros",
+        "clab-node-lab-dir": "/root/LABS/clab-NRS-II-IXR-LAB/SR12",
+        "clab-node-longname": "clab-NRS-II-IXR-LAB-SR12",
+        "clab-node-name": "SR12",
+        "clab-node-type": "ixr-xs",
+        "clab-owner": "root",
+        "clab-topo-file": "/root/LABS/NRS_II_Ty.clab.yaml",
+        "containerlab": "NRS-II-IXR-LAB"
+      },
+      "port-bindings": [
+      ]
+    },
+    "SR2": {
+      "index": "4",
+      "shortname": "SR2",
+      "longname": "clab-NRS-II-IXR-LAB-SR2",
+      "fqdn": "SR2.NRS-II-IXR-LAB.io",
+      "group": "",
+      "labdir": "/root/LABS/clab-NRS-II-IXR-LAB/SR2",
+      "kind": "nokia_sros",
+      "image": "vrnetlab/nokia_sros:24.10.R6",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.8",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::8",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-git-branch": "master",
+        "clab-mgmt-net-bridge": "br-3f1ff21540fe",
+        "clab-node-group": "",
+        "clab-node-kind": "nokia_sros",
+        "clab-node-lab-dir": "/root/LABS/clab-NRS-II-IXR-LAB/SR2",
+        "clab-node-longname": "clab-NRS-II-IXR-LAB-SR2",
+        "clab-node-name": "SR2",
+        "clab-node-type": "ixr-xs",
+        "clab-owner": "root",
+        "clab-topo-file": "/root/LABS/NRS_II_Ty.clab.yaml",
+        "containerlab": "NRS-II-IXR-LAB"
+      },
+      "port-bindings": [
+      ]
+    },
+    "SR3": {
+      "index": "5",
+      "shortname": "SR3",
+      "longname": "clab-NRS-II-IXR-LAB-SR3",
+      "fqdn": "SR3.NRS-II-IXR-LAB.io",
+      "group": "",
+      "labdir": "/root/LABS/clab-NRS-II-IXR-LAB/SR3",
+      "kind": "nokia_sros",
+      "image": "vrnetlab/nokia_sros:24.10.R6",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.5",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::5",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-git-branch": "master",
+        "clab-mgmt-net-bridge": "br-3f1ff21540fe",
+        "clab-node-group": "",
+        "clab-node-kind": "nokia_sros",
+        "clab-node-lab-dir": "/root/LABS/clab-NRS-II-IXR-LAB/SR3",
+        "clab-node-longname": "clab-NRS-II-IXR-LAB-SR3",
+        "clab-node-name": "SR3",
+        "clab-node-type": "ixr-xs",
+        "clab-owner": "root",
+        "clab-topo-file": "/root/LABS/NRS_II_Ty.clab.yaml",
+        "containerlab": "NRS-II-IXR-LAB"
+      },
+      "port-bindings": [
+      ]
+    },
+    "SR4": {
+      "index": "6",
+      "shortname": "SR4",
+      "longname": "clab-NRS-II-IXR-LAB-SR4",
+      "fqdn": "SR4.NRS-II-IXR-LAB.io",
+      "group": "",
+      "labdir": "/root/LABS/clab-NRS-II-IXR-LAB/SR4",
+      "kind": "nokia_sros",
+      "image": "vrnetlab/nokia_sros:24.10.R6",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.11",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::b",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-git-branch": "master",
+        "clab-mgmt-net-bridge": "br-3f1ff21540fe",
+        "clab-node-group": "",
+        "clab-node-kind": "nokia_sros",
+        "clab-node-lab-dir": "/root/LABS/clab-NRS-II-IXR-LAB/SR4",
+        "clab-node-longname": "clab-NRS-II-IXR-LAB-SR4",
+        "clab-node-name": "SR4",
+        "clab-node-type": "ixr-xs",
+        "clab-owner": "root",
+        "clab-topo-file": "/root/LABS/NRS_II_Ty.clab.yaml",
+        "containerlab": "NRS-II-IXR-LAB"
+      },
+      "port-bindings": [
+      ]
+    },
+    "SR5": {
+      "index": "7",
+      "shortname": "SR5",
+      "longname": "clab-NRS-II-IXR-LAB-SR5",
+      "fqdn": "SR5.NRS-II-IXR-LAB.io",
+      "group": "",
+      "labdir": "/root/LABS/clab-NRS-II-IXR-LAB/SR5",
+      "kind": "nokia_sros",
+      "image": "vrnetlab/nokia_sros:24.10.R6",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.9",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::9",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-git-branch": "master",
+        "clab-mgmt-net-bridge": "br-3f1ff21540fe",
+        "clab-node-group": "",
+        "clab-node-kind": "nokia_sros",
+        "clab-node-lab-dir": "/root/LABS/clab-NRS-II-IXR-LAB/SR5",
+        "clab-node-longname": "clab-NRS-II-IXR-LAB-SR5",
+        "clab-node-name": "SR5",
+        "clab-node-type": "ixr-xs",
+        "clab-owner": "root",
+        "clab-topo-file": "/root/LABS/NRS_II_Ty.clab.yaml",
+        "containerlab": "NRS-II-IXR-LAB"
+      },
+      "port-bindings": [
+      ]
+    },
+    "SR6": {
+      "index": "8",
+      "shortname": "SR6",
+      "longname": "clab-NRS-II-IXR-LAB-SR6",
+      "fqdn": "SR6.NRS-II-IXR-LAB.io",
+      "group": "",
+      "labdir": "/root/LABS/clab-NRS-II-IXR-LAB/SR6",
+      "kind": "nokia_sros",
+      "image": "vrnetlab/nokia_sros:24.10.R6",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.12",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::c",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-git-branch": "master",
+        "clab-mgmt-net-bridge": "br-3f1ff21540fe",
+        "clab-node-group": "",
+        "clab-node-kind": "nokia_sros",
+        "clab-node-lab-dir": "/root/LABS/clab-NRS-II-IXR-LAB/SR6",
+        "clab-node-longname": "clab-NRS-II-IXR-LAB-SR6",
+        "clab-node-name": "SR6",
+        "clab-node-type": "ixr-xs",
+        "clab-owner": "root",
+        "clab-topo-file": "/root/LABS/NRS_II_Ty.clab.yaml",
+        "containerlab": "NRS-II-IXR-LAB"
+      },
+      "port-bindings": [
+      ]
+    },
+    "SR7": {
+      "index": "9",
+      "shortname": "SR7",
+      "longname": "clab-NRS-II-IXR-LAB-SR7",
+      "fqdn": "SR7.NRS-II-IXR-LAB.io",
+      "group": "",
+      "labdir": "/root/LABS/clab-NRS-II-IXR-LAB/SR7",
+      "kind": "nokia_sros",
+      "image": "vrnetlab/nokia_sros:24.10.R6",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.6",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::6",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-git-branch": "master",
+        "clab-mgmt-net-bridge": "br-3f1ff21540fe",
+        "clab-node-group": "",
+        "clab-node-kind": "nokia_sros",
+        "clab-node-lab-dir": "/root/LABS/clab-NRS-II-IXR-LAB/SR7",
+        "clab-node-longname": "clab-NRS-II-IXR-LAB-SR7",
+        "clab-node-name": "SR7",
+        "clab-node-type": "ixr-xs",
+        "clab-owner": "root",
+        "clab-topo-file": "/root/LABS/NRS_II_Ty.clab.yaml",
+        "containerlab": "NRS-II-IXR-LAB"
+      },
+      "port-bindings": [
+      ]
+    },
+    "SR8": {
+      "index": "10",
+      "shortname": "SR8",
+      "longname": "clab-NRS-II-IXR-LAB-SR8",
+      "fqdn": "SR8.NRS-II-IXR-LAB.io",
+      "group": "",
+      "labdir": "/root/LABS/clab-NRS-II-IXR-LAB/SR8",
+      "kind": "nokia_sros",
+      "image": "vrnetlab/nokia_sros:24.10.R6",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.3",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::3",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-git-branch": "master",
+        "clab-mgmt-net-bridge": "br-3f1ff21540fe",
+        "clab-node-group": "",
+        "clab-node-kind": "nokia_sros",
+        "clab-node-lab-dir": "/root/LABS/clab-NRS-II-IXR-LAB/SR8",
+        "clab-node-longname": "clab-NRS-II-IXR-LAB-SR8",
+        "clab-node-name": "SR8",
+        "clab-node-type": "ixr-xs",
+        "clab-owner": "root",
+        "clab-topo-file": "/root/LABS/NRS_II_Ty.clab.yaml",
+        "containerlab": "NRS-II-IXR-LAB"
+      },
+      "port-bindings": [
+      ]
+    },
+    "SR9": {
+      "index": "11",
+      "shortname": "SR9",
+      "longname": "clab-NRS-II-IXR-LAB-SR9",
+      "fqdn": "SR9.NRS-II-IXR-LAB.io",
+      "group": "",
+      "labdir": "/root/LABS/clab-NRS-II-IXR-LAB/SR9",
+      "kind": "nokia_sros",
+      "image": "vrnetlab/nokia_sros:24.10.R6",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.13",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::d",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-git-branch": "master",
+        "clab-mgmt-net-bridge": "br-3f1ff21540fe",
+        "clab-node-group": "",
+        "clab-node-kind": "nokia_sros",
+        "clab-node-lab-dir": "/root/LABS/clab-NRS-II-IXR-LAB/SR9",
+        "clab-node-longname": "clab-NRS-II-IXR-LAB-SR9",
+        "clab-node-name": "SR9",
+        "clab-node-type": "ixr-xs",
+        "clab-owner": "root",
+        "clab-topo-file": "/root/LABS/NRS_II_Ty.clab.yaml",
+        "containerlab": "NRS-II-IXR-LAB"
+      },
+      "port-bindings": [
+      ]
+    }
+  },
+  "links": [
+    {
+      "endpoints": {
+        "a": {
+          "node": "SR1",
+          "interface": "eth1",
+          "mac": "aa:c1:ab:92:13:ab",
+          "peer": "z"
+        },
+        "z": {
+          "node": "SR5",
+          "interface": "eth1",
+          "mac": "aa:c1:ab:90:d2:1d",
+          "peer": "a"
+        }
+      }
+    },
+    {
+      "endpoints": {
+        "a": {
+          "node": "SR1",
+          "interface": "eth2",
+          "mac": "aa:c1:ab:b6:b9:27",
+          "peer": "z"
+        },
+        "z": {
+          "node": "SR2",
+          "interface": "eth2",
+          "mac": "aa:c1:ab:fe:52:75",
+          "peer": "a"
+        }
+      }
+    },
+    {
+      "endpoints": {
+        "a": {
+          "node": "SR1",
+          "interface": "eth3",
+          "mac": "aa:c1:ab:07:df:0b",
+          "peer": "z"
+        },
+        "z": {
+          "node": "SR3",
+          "interface": "eth3",
+          "mac": "aa:c1:ab:69:0e:b0",
+          "peer": "a"
+        }
+      }
+    },
+    {
+      "endpoints": {
+        "a": {
+          "node": "SR1",
+          "interface": "eth4",
+          "mac": "aa:c1:ab:7d:ef:b3",
+          "peer": "z"
+        },
+        "z": {
+          "node": "SR4",
+          "interface": "eth4",
+          "mac": "aa:c1:ab:ab:62:63",
+          "peer": "a"
+        }
+      }
+    },
+    {
+      "endpoints": {
+        "a": {
+          "node": "SR2",
+          "interface": "eth4",
+          "mac": "aa:c1:ab:12:ec:97",
+          "peer": "z"
+        },
+        "z": {
+          "node": "SR3",
+          "interface": "eth4",
+          "mac": "aa:c1:ab:78:4a:20",
+          "peer": "a"
+        }
+      }
+    },
+    {
+      "endpoints": {
+        "a": {
+          "node": "SR2",
+          "interface": "eth3",
+          "mac": "aa:c1:ab:bd:21:f7",
+          "peer": "z"
+        },
+        "z": {
+          "node": "SR4",
+          "interface": "eth3",
+          "mac": "aa:c1:ab:3b:f4:62",
+          "peer": "a"
+        }
+      }
+    },
+    {
+      "endpoints": {
+        "a": {
+          "node": "SR2",
+          "interface": "eth1",
+          "mac": "aa:c1:ab:e6:b4:f7",
+          "peer": "z"
+        },
+        "z": {
+          "node": "SR6",
+          "interface": "eth1",
+          "mac": "aa:c1:ab:77:32:bf",
+          "peer": "a"
+        }
+      }
+    },
+    {
+      "endpoints": {
+        "a": {
+          "node": "SR3",
+          "interface": "eth1",
+          "mac": "aa:c1:ab:e9:42:7c",
+          "peer": "z"
+        },
+        "z": {
+          "node": "SR7",
+          "interface": "eth1",
+          "mac": "aa:c1:ab:1c:62:8f",
+          "peer": "a"
+        }
+      }
+    },
+    {
+      "endpoints": {
+        "a": {
+          "node": "SR3",
+          "interface": "eth2",
+          "mac": "aa:c1:ab:ae:9b:ec",
+          "peer": "z"
+        },
+        "z": {
+          "node": "SR4",
+          "interface": "eth2",
+          "mac": "aa:c1:ab:aa:f1:0e",
+          "peer": "a"
+        }
+      }
+    },
+    {
+      "endpoints": {
+        "a": {
+          "node": "SR4",
+          "interface": "eth1",
+          "mac": "aa:c1:ab:21:fc:21",
+          "peer": "z"
+        },
+        "z": {
+          "node": "SR8",
+          "interface": "eth1",
+          "mac": "aa:c1:ab:d6:46:b2",
+          "peer": "a"
+        }
+      }
+    },
+    {
+      "endpoints": {
+        "a": {
+          "node": "SR5",
+          "interface": "eth2",
+          "mac": "aa:c1:ab:68:ad:e6",
+          "peer": "z"
+        },
+        "z": {
+          "node": "SR9",
+          "interface": "eth2",
+          "mac": "aa:c1:ab:15:b2:94",
+          "peer": "a"
+        }
+      }
+    },
+    {
+      "endpoints": {
+        "a": {
+          "node": "SR5",
+          "interface": "eth3",
+          "mac": "aa:c1:ab:b4:38:1b",
+          "peer": "z"
+        },
+        "z": {
+          "node": "SR6",
+          "interface": "eth3",
+          "mac": "aa:c1:ab:21:85:fe",
+          "peer": "a"
+        }
+      }
+    },
+    {
+      "endpoints": {
+        "a": {
+          "node": "SR6",
+          "interface": "eth2",
+          "mac": "aa:c1:ab:26:cb:5c",
+          "peer": "z"
+        },
+        "z": {
+          "node": "SR10",
+          "interface": "eth2",
+          "mac": "aa:c1:ab:75:0f:c2",
+          "peer": "a"
+        }
+      }
+    },
+    {
+      "endpoints": {
+        "a": {
+          "node": "SR7",
+          "interface": "eth2",
+          "mac": "aa:c1:ab:eb:cd:3a",
+          "peer": "z"
+        },
+        "z": {
+          "node": "SR11",
+          "interface": "eth2",
+          "mac": "aa:c1:ab:d4:72:2d",
+          "peer": "a"
+        }
+      }
+    },
+    {
+      "endpoints": {
+        "a": {
+          "node": "SR7",
+          "interface": "eth3",
+          "mac": "aa:c1:ab:fb:d8:ce",
+          "peer": "z"
+        },
+        "z": {
+          "node": "SR8",
+          "interface": "eth3",
+          "mac": "aa:c1:ab:20:14:50",
+          "peer": "a"
+        }
+      }
+    },
+    {
+      "endpoints": {
+        "a": {
+          "node": "SR8",
+          "interface": "eth2",
+          "mac": "aa:c1:ab:64:07:ae",
+          "peer": "z"
+        },
+        "z": {
+          "node": "SR12",
+          "interface": "eth2",
+          "mac": "aa:c1:ab:8a:c7:de",
+          "peer": "a"
+        }
+      }
+    }
+  ]
+}
