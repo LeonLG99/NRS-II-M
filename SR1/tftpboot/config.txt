@@ -3,7 +3,7 @@
 # Built on Wed Aug 13 19:19:31 UTC 2025 by builder in /builds/2410B/R6/panos
 # Configuration format version 24.10 revision 0
 
-# Generated MON SEP 21 16:46:26 2026 UTC
+# Generated WED OCT 14 03:56:07 2026 UTC
 
 exit all
 configure
@@ -40,6 +40,15 @@ echo "System Security Configuration"
     system
         security
             ftp-server
+            management-access-filter
+                ip-filter
+                    shutdown
+                    default-action permit
+                    entry 10
+                    exit
+                    no shutdown
+                exit
+            exit
             profile "administrative"
                 netconf
                     base-op-authorization
@@ -124,6 +133,14 @@ echo "System Security Configuration"
                 password "$2y$10$08NrDFnak71cbM/Ge44W6.DgJ4fd/jSiItxINqglBtjXWtgGtteha"
                 access console ftp
             exit
+            user "leon"
+                password "$2y$10$Vz6N7itYNYTcVsL9hXleU.mNntNqG.pEsqdm6IN6TJ1DNYBKdinx6"
+                access console ftp ssh-cli
+                console
+                    member "default"
+                    member "administrative"
+                exit
+            exit
             snmp
                 community "76HzdddhlPpRo1Vql+ZB5spLqccgYQ==" hash2 r version v2c
             exit
@@ -140,6 +157,8 @@ echo "System Login Control Configuration"
             ssh
                 inbound-max-sessions 30
             exit
+            motd text "*****************************ACCESO RESTRINGIDO SOLO IP TAC***********************************/**********************************************************************************************"
+            login-banner
         exit
     exit
 #--------------------------------------------------
@@ -561,6 +580,9 @@ echo "RSVP Configuration"
 echo "MPLS LSP Configuration"
 #--------------------------------------------------
         mpls
+            path "primary"
+                no shutdown
+            exit
             no shutdown
         exit
 #--------------------------------------------------
@@ -734,4 +756,4 @@ echo "System Configuration Mode Configuration"
 
 exit all
 
-# Finished MON SEP 21 16:46:26 2026 UTC
+# Finished WED OCT 14 03:56:07 2026 UTC
